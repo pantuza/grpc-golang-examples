@@ -3,6 +3,9 @@
 #
 
 
+# Binary directory
+BIN := bin
+
 help:
 	@echo "gRPC Golang examples"
 	@echo
@@ -22,21 +25,21 @@ build: server client
 
 .PHONY:server
 server:
-	go build -race -o cheese_server server/main.go
+	go build -race -o $(BIN)/server cmd/server/main.go
 
 
 .PHONY:client
 client:
-	go build -race -o cheese_client client/main.go
+	go build -race -o $(BIN)/client cmd/client/main.go
 
 
-run_server: cheese_server
-	@./cheese_server
+run_server: $(BIN)/server
+	@./$<
 
 
-run_client: cheese_client
-	@./cheese_client
+run_client: $(BIN)/client
+	@./$<
 
 
 clean:
-	@rm -vf cheese_server cheese_client
+	@rm -vf $(BIN)/{server,client}
