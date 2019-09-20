@@ -12,6 +12,6 @@
 *.out
 
 __pycache__
-cheese_server
-cheese_client
- *.pyc
+cheese_farm/bin/*
+!cheese_farm/bin/.keep
+*.pyc
