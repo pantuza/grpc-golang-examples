@@ -16,6 +16,8 @@ help:
 	@echo " client                    Builds Client binary"
 	@echo " run_server                Runs server binary"
 	@echo " run_client                Runs client binary"
+	@echo " protoc_python             Runs the protoc compiler for Python"
+	@echo " run_pyclient              Runs the Python client"
 	@echo " clean                     Removes binary files"
 	@echo
 
@@ -39,6 +41,19 @@ run_server: $(BIN)/server
 
 run_client: $(BIN)/client
 	@./$<
+
+
+protoc_python:
+	@cd python && \
+		pipenv run python -m grpc_tools.protoc \
+						  -I ../cheese/ \
+						  --python_out=. \
+						  --grpc_python_out=. \
+						  cheese.proto
+
+
+run_pyclient:
+	@cd python && pipenv run python client.py
 
 
 clean:
