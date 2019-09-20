@@ -142,18 +142,18 @@ DESCRIPTOR.message_types_by_name['CheeseRequest'] = _CHEESEREQUEST
 DESCRIPTOR.enum_types_by_name['CheeseType'] = _CHEESETYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Cheese = _reflection.GeneratedProtocolMessageType('Cheese', (_message.Message,), dict(
-  DESCRIPTOR = _CHEESE,
-  __module__ = 'cheese_pb2'
+Cheese = _reflection.GeneratedProtocolMessageType('Cheese', (_message.Message,), {
+  'DESCRIPTOR' : _CHEESE,
+  '__module__' : 'cheese_pb2'
   # @@protoc_insertion_point(class_scope:cheesefarm.Cheese)
-  ))
+  })
 _sym_db.RegisterMessage(Cheese)
 
-CheeseRequest = _reflection.GeneratedProtocolMessageType('CheeseRequest', (_message.Message,), dict(
-  DESCRIPTOR = _CHEESEREQUEST,
-  __module__ = 'cheese_pb2'
+CheeseRequest = _reflection.GeneratedProtocolMessageType('CheeseRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CHEESEREQUEST,
+  '__module__' : 'cheese_pb2'
   # @@protoc_insertion_point(class_scope:cheesefarm.CheeseRequest)
-  ))
+  })
 _sym_db.RegisterMessage(CheeseRequest)
 
 
