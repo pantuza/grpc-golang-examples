@@ -1,19 +1,30 @@
 from random import randint
+from time import sleep
 
 import grpc
 
 import cheese_pb2 as pb
-
+import cheese_pb2_grpc
 
 def main ():
 
-    with grpc.insecure_channel('localhost:4000') as channel:
-        client = pb.CheeseStub(channel)
+    # Load Certificate file
+    trusted_cert = open("../ssl/cert.pem", "rb").read()
+    credentials = grpc.ssl_channel_credentials(root_certificates=trusted_cert)
+
+    with grpc.secure_channel('localhost:4000', credentials) as channel:
+
+        client = cheese_pb2_grpc.CheeseServiceStub(channel)
 
         while True:
 
-            cheese_type = randint(100) % 5
+            cheese_type = randint(0, 4)
             order = pb.CheeseRequest(type=cheese_type)
 
             cheese = client.Order(order)
-            print("[gRPC] Received={0}", cheese.type)
+            print("[gRPC] Received={0}".format(pb.CheeseType.Name(cheese.type)))
+
+
+if __name__ == "__main__":
+
+    main()
