@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+package cheesefarm;
+
+message Cheese {
+    int32 age = 1;
+    CheeseType type = 2;
+}
+
+enum CheeseType {
+    EMMENTAL = 0;
+    BRIE = 1;
+    PECORINO = 2;
+    ROQUEFORT = 3;
+    CANASTRA = 4;
+}
+
+message CheeseRequest {
+    CheeseType type = 1;
+}
+
+service CheeseService {
+
+    rpc Order(CheeseRequest) returns (Cheese);
+}
