@@ -9,6 +9,6 @@ Slides are available at Speakerdeck: [Building reliable and efficient services t
 
 ### Available examples
 
-1. [A very simple gRPC service](https://github.com/pantuza/grpc-golang-examples/blob/master/cheese_farm/Readme.md)
+1. [A very simple gRPC service](https://github.com/pantuza/grpc-golang-examples/blob/master/cheese_farm/README.md)
 
 The links above refers to each documentation of how to run services on your machine.
