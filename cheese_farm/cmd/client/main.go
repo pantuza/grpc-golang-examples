@@ -25,7 +25,7 @@ func main() {
 	certFile := filepath.Join(wd, "ssl", "cert.pem")
 	creds, err := credentials.NewClientTLSFromFile(certFile, "")
 	if err != nil {
-		log.Fatal("Error: %v", err)
+		log.Fatalf("Error: %s\n", err)
 	}
 
 	serverAddr := fmt.Sprintf("%s:%d", pb.ADDR, pb.PORT)
@@ -34,7 +34,7 @@ func main() {
 	conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(creds))
 
 	if err != nil {
-		log.Fatal("Fail to dial: %v", err)
+		log.Fatalf("Fail to dial: %s\n", err)
 	}
 
 	defer conn.Close()
@@ -48,7 +48,7 @@ func main() {
 		}
 		cheese, err := client.Order(ctx, order)
 		if err != nil {
-			log.Fatal("Error: %v", err)
+			log.Fatalf("Error: %s\n", err)
 		}
 
 		fmt.Printf("[gRPC] Received=%s\n", cheese.GetType())
