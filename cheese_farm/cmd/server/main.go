@@ -42,9 +42,7 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 
-	// grpcServer := grpc.NewServer()
 	grpcServer := grpc.NewServer(grpc.Creds(creds))
-
 	pb.RegisterCheeseServiceServer(grpcServer, pb.NewServer())
 
 	fmt.Printf("Listening gRPC on %s\n", serverAddr)
