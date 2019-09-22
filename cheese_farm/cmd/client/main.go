@@ -29,8 +29,6 @@ func main() {
 	}
 
 	serverAddr := fmt.Sprintf("%s:%d", pb.ADDR, pb.PORT)
-	// conn, err := grpc.Dial(serverAddr, grpc.WithInsecure())
-
 	conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(creds))
 
 	if err != nil {
