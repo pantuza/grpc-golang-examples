@@ -17,6 +17,7 @@ help:
 	@echo " run_server                Runs server binary"
 	@echo " run_client                Runs client binary"
 	@echo " protoc_python             Runs the protoc compiler for Python"
+	@echo " build_pyclient            Builds virtualenv and install deps"
 	@echo " run_pyclient              Runs the Python client"
 	@echo " clean                     Removes binary files"
 	@echo
@@ -51,6 +52,9 @@ protoc_python:
 						  --grpc_python_out=. \
 						  cheese.proto
 
+
+build_pyclient:
+	@cd python && pipenv install
 
 run_pyclient:
 	@cd python && pipenv run python client.py
