@@ -25,7 +25,7 @@ func main() {
 	certFile := filepath.Join(wd, "ssl", "cert.pem")
 	creds, err := credentials.NewClientTLSFromFile(certFile, "")
 	if err != nil {
-		log.Fatalf("Error: %s\n", err)
+		log.Fatalf("Error creating credentials: %s\n", err)
 	}
 
 	serverAddr := fmt.Sprintf("%s:%d", pb.ADDR, pb.PORT)
