@@ -46,7 +46,7 @@ run_client: $(BIN)/client
 
 protoc_python:
 	@cd python && \
-		pipenv run python -m grpc_tools.protoc \
+		poetry run python -m grpc_tools.protoc \
 						  -I ../cheese/ \
 						  --python_out=. \
 						  --grpc_python_out=. \
@@ -54,10 +54,10 @@ protoc_python:
 
 
 build_pyclient:
-	@cd python && pipenv install
+	@cd python && poetry install
 
 run_pyclient:
-	@cd python && pipenv run python client.py
+	@cd python && poetry run python client.py
 
 
 clean:
