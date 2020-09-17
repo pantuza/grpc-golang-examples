@@ -12,21 +12,26 @@ def main ():
     trusted_cert = open("../ssl/cert.pem", "rb").read()
     credentials = grpc.ssl_channel_credentials(root_certificates=trusted_cert)
 
-    with grpc.secure_channel('localhost:4000', credentials) as channel:
+    try:
 
-        client = cheese_pb2_grpc.CheeseServiceStub(channel)
+        with grpc.secure_channel('localhost:4000', credentials) as channel:
 
-        while True:
-            try:
-                cheese_type = randint(0, 4)
-                order = pb.CheeseRequest(type=cheese_type)
+            client = cheese_pb2_grpc.CheeseServiceStub(channel)
 
-                cheese = client.Order(order)
-                print("[gRPC] Received={0}".format(pb.CheeseType.Name(cheese.type)))
+            while True:
+                try:
+                    cheese_type = randint(0, 4)
+                    order = pb.CheeseRequest(type=cheese_type)
 
-            except grpc._channel._Rendezvous as err:
-                print(err)
-                sleep(1)
+                    cheese = client.Order(order)
+                    print("[gRPC] Received={0}".format(pb.CheeseType.Name(cheese.type)))
+
+                except grpc._channel._Rendezvous as err:
+                    print(err)
+                    sleep(1)
+
+    except KeyboardInterrupt:
+        print("[gRPC] Teardown")
 
 
 if __name__ == "__main__":
