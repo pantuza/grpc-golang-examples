@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "cheese_farm"
+version = "0.1.0"
+description = "Example gRPC Python client application"
+authors = ["Gustavo Pantuza <gustavopantuza@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.8.5"
+grpcio = "*"
+grpcio-tools = "*"
+ipython = "*"
